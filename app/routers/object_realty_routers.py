@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+from app.routers.models.object_realty import ObjectRealty
 
 router = APIRouter(prefix='/object_realty', tags=['object_realty'])
 
@@ -23,7 +23,7 @@ def get_all_object_realty(id):
 
 
 @router.post("/properties")
-def creat_new_object_realty(json: realty):
+def creat_new_object_realty(json: ObjectRealty):
     '''
     POST	/properties	Создать новый объект недвижимости
     '''
@@ -32,7 +32,7 @@ def creat_new_object_realty(json: realty):
 
 
 @router.post("/properties/{id}")
-def change_object_needability(id, json: realty):
+def change_object_needability(id, json: ObjectRealty):
     '''
    PUT	/properties/:id	Обновить информацию об указанном объекте
     '''

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+from app.routers.models.deal import Deal
 
 router = APIRouter(prefix='/deals', tags=['deals'])
 
@@ -23,7 +23,7 @@ def get_deal(id):
 
 
 @router.post("/")
-def creat_new_deal(json: deal):
+def creat_new_deal(json: Deal):
     '''
    POST	/deals	Создать новую сделку
    '''
@@ -32,7 +32,7 @@ def creat_new_deal(json: deal):
 
 
 @router.put("/{id}")
-def change_deal(id, json: deal):
+def change_deal(id, json: Deal):
     '''
   PUT	/deals/:id	Обновить информацию о указанной сделке
     '''
