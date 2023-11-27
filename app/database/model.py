@@ -43,7 +43,7 @@ class Deal(Base):
 
 
 # Create ObjectRealty model
-class ObjectRealty(Base):
+class ObjectRealty_table(Base):
     __tablename__ = 'object_realty'
 
     id = Column(Integer, primary_key=True, index=True)
@@ -53,7 +53,6 @@ class ObjectRealty(Base):
     number_rooms = Column(Integer, nullable=True)
     object_status = Column(String)
     year_construction = Column(Integer)
-    contact_information = Column(String)
     price = Column(Integer)
     id_client = Column(Integer)
     id_deal = Column(Integer)

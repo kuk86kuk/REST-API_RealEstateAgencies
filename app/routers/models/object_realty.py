@@ -2,15 +2,14 @@ from pydantic import BaseModel
 
 
 class ObjectRealty(BaseModel):
-    id: int
+    id: int = None
     tupe_object_realty: str 
-    address: str
-    square: int 
-    number_rooms: None
-    object_status: str
-    year_construction: int
-    contact_information: str
-    price: int
-    id_clint: int
-    id_deal: int
+    address: str = 'г. Екатеринубург, ул. Ленина 210, кв. 7'
+    square: int = 53
+    number_rooms: int = 3
+    object_status: str = "Вторичка"
+    year_construction: int = 1993
+    price: int = 5000000
+    id_client: int = 1
+    id_deal: int = None
     
