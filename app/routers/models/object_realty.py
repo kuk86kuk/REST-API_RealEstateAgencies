@@ -10,6 +10,6 @@ class ObjectRealty(BaseModel):
     object_status: str = "Вторичка"
     year_construction: int = 1993
     price: int = 5000000
-    id_client: int = 1
+    id_sobstvenik: int = 1
     id_deal: int = None
     

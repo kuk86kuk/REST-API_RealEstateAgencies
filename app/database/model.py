@@ -28,11 +28,12 @@ class Client_table(Base):
 
 
 # Create Deal model
-class Deal(Base):
+class Deal_table(Base):
     __tablename__  = 'deal'
 
     id = Column(Integer, primary_key=True, index=True)
     id_object_realty = Column(Integer)
+    id_sobstvenik = Column(Integer)
     id_client = Column(Integer)
     datetime_deal = Column(DateTime)
     amount = Column(Integer)
@@ -54,7 +55,7 @@ class ObjectRealty_table(Base):
     object_status = Column(String)
     year_construction = Column(Integer)
     price = Column(Integer)
-    id_client = Column(Integer)
+    id_sobstvenik = Column(Integer)
     id_deal = Column(Integer)
 
 

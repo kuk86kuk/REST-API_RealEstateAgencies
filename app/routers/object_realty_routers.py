@@ -25,7 +25,7 @@ def get_all_object_realty():
             object_status=object_realty.object_status,
             year_construction=object_realty.year_construction,
             price=object_realty.price,
-            id_client=object_realty.id_client,
+            id_sobstvenik=object_realty.id_sobstvenik,
             id_deal=object_realty.id_deal
        ))
     return list_new
@@ -50,7 +50,7 @@ def get_object_realty(id):
             object_status=object_realty.object_status,
             year_construction=object_realty.year_construction,
             price=object_realty.price,
-            id_client=object_realty.id_client,
+            id_sobstvenik=object_realty.id_sobstvenik,
             id_deal=object_realty.id_deal
     )
 
@@ -70,7 +70,7 @@ def creat_new_object_realty(json: ObjectRealty):
         object_status=json.object_status,
         year_construction=json.year_construction,
         price=json.price,
-        id_client=json.id_client,
+        id_sobstvenik=json.id_sobstvenik,
         id_deal=json.id_deal)
     
     main.db.add(object_realty)     # добавляем в бд
@@ -94,7 +94,7 @@ def change_object_needability(id, json: ObjectRealty):
     object_realty.object_status = json.object_status
     object_realty.year_construction = json.year_construction
     object_realty.price = json.price
-    object_realty.id_client = json.id_client
+    object_realty.id_sobstvenik = json.id_sobstvenik
     object_realty.id_deal = json.id_deal
     main.db.commit()
     return ObjectRealty(
@@ -106,7 +106,7 @@ def change_object_needability(id, json: ObjectRealty):
         object_status=object_realty.object_status,
         year_construction=object_realty.year_construction,
         price=object_realty.price,
-        id_client=object_realty.id_client,
+        id_sobstvenik=object_realty.id_sobstvenik,
         id_deal=object_realty.id_deal
     )
 
@@ -133,6 +133,6 @@ def change_object_needability(id):
         object_status=object_realty.object_status,
         year_construction=object_realty.year_construction,
         price=object_realty.price,
-        id_client=object_realty.id_client,
+        id_sobstvenik=object_realty.id_sobstvenik,
         id_deal=object_realty.id_deal
     )
