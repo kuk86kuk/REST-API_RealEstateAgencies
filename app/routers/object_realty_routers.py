@@ -11,7 +11,8 @@ router = APIRouter(prefix='/object_realty', tags=['object_realty'])
 @router.get("/properties")
 def get_all_object_realty():
     '''
-    GET	/properties	Получить список всех объектов недвижимости
+    Функция get_all_object_realty отвечает за получение списка всех объектов недвижимости. 
+    Она отправляет GET запрос на /properties и возвращает список объектов ObjectRealty.
     '''
     list_new = []
     object_realty_all = main.db.query(ObjectRealty_table).all()
@@ -31,12 +32,12 @@ def get_all_object_realty():
     return list_new
 
 
-
-
 @router.get("/properties/{id}")
 def get_object_realty(id):
     '''
-    GET	/properties/:id	Получить информацию об указанном объекте
+    Функция get_object_realty отвечает за получение информации об указанном объекте недвижимости. 
+    Она отправляет GET запрос на /properties/{id} с указанным идентификатором объекта и возвращает 
+    информацию о нем в виде объекта ObjectRealty.
     '''
     object_realty = main.db.query(ObjectRealty_table).filter(ObjectRealty_table.id == id).first()
     if not object_realty:
@@ -55,11 +56,12 @@ def get_object_realty(id):
     )
 
 
-
 @router.post("/properties")
 def creat_new_object_realty(json: ObjectRealty):
     '''
-    POST	/properties	Создать новый объект недвижимости
+    Функция creat_new_object_realty отвечает за создание нового объекта недвижимости. 
+    Она отправляет POST запрос на /properties с данными нового объекта в формате JSON 
+    и сохраняет его в базе данных. Возвращает идентификатор созданного объекта.
     '''
     # Создание объекта SQLAlchemy из объекта Pydantic
     object_realty = ObjectRealty_table(
@@ -78,11 +80,12 @@ def creat_new_object_realty(json: ObjectRealty):
     return object_realty.id
 
 
-
 @router.put("/properties/{id}")
 def change_object_needability(id, json: ObjectRealty):
     '''
-   PUT	/properties/:id	Обновить информацию об указанном объекте
+    Функция change_object_needability отвечает за обновление информации об указанном объекте недвижимости. 
+    Она отправляет PUT запрос на /properties/{id} с указанным идентификатором объекта и данными, 
+    которые нужно обновить. Обновляет информацию в базе данных и возвращает обновленную информацию о объекте.
     '''
     object_realty = main.db.query(ObjectRealty_table).filter(ObjectRealty_table.id == id).first()
     if not object_realty:
@@ -111,13 +114,12 @@ def change_object_needability(id, json: ObjectRealty):
     )
 
 
-
-
-
 @router.delete("/properties/{id}")
 def change_object_needability(id):
     '''
-   DELETE	/properties/:id	Удалить указанный объект недвижимости
+    Функция delete_object_realty отвечает за удаление указанного объекта недвижимости. 
+    Она отправляет DELETE запрос на /properties/{id} с указанным идентификатором объекта. 
+    Удаляет объект из базы данных и возвращает информацию об удаленном объекте.
     '''
     object_realty = main.db.query(ObjectRealty_table).filter(ObjectRealty_table.id == id).first()
     if not object_realty:

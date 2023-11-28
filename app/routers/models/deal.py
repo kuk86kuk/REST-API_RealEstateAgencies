@@ -6,7 +6,7 @@ class Deal(BaseModel):
     id_object_realty: int = 2
     id_sobstvenik: int = 2
     id_client: int = 1
-    datetime_deal: date = None
+    datetime_deal: str = '28.11.2023'
     amount: int = 6000000
     currency: str = 'руболь'
     status: str = 'завершено'

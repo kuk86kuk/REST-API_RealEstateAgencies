@@ -10,7 +10,7 @@ router = APIRouter(prefix='/clients', tags=['clients'])
 @router.get("/")
 def get_all_clients():
     '''
-   GET	/clients	Получить список всех клиентов
+    Функция get_all_clients возвращает список всех клиентов из базы данных.
     '''
     list_new = []
     clients = main.db.query(Client_table).all()
@@ -29,7 +29,7 @@ def get_all_clients():
 @router.get("/{id}")
 def get_client(id):
     '''
-    GET	/clients/:id	Получить информацию о указанном клиенте
+    Функция get_client возвращает информацию о клиенте с указанным id.
     '''
     client = main.db.query(Client_table).filter(Client_table.id == id).first()
     if not client:
@@ -46,7 +46,9 @@ def get_client(id):
 @router.post("/")
 def creat_new_client(json: Client):
     '''
-    POST	/clients	Создать нового клиента
+    Функция creat_new_client отвечает за создание нового клиента. 
+    Она отправляет POST запрос с данными нового объекта в формате JSON 
+    и сохраняет его в базе данных. Возвращает идентификатор созданного объекта.
     '''
     full_name = json.full_name
     phone_number = json.phone_number
@@ -66,7 +68,9 @@ def creat_new_client(json: Client):
 @router.put("/{id}")
 def change_client(id, json: Client):
     '''
-  PUT	/clients/:id	Обновить информацию о указанном клиенте
+    Функция change_client отвечает за обновление информации об указанном клиенте. 
+    Она отправляет PUT запрос на с указанным идентификатором объекта и JSON, которые нужно обновить.
+    Обновляет информацию в базе данных и возвращает обновленную информацию о объект
     '''
     
     client = main.db.query(Client_table).filter(Client_table.id == id).first()
@@ -89,7 +93,9 @@ def change_client(id, json: Client):
 @router.delete("/{id}")
 def delete_client(id):
     '''
-   DELETE	/clients/:id	Удалить указанного клиента
+    Функция delete_client отвечает за удаление указанного клиента. 
+    Она отправляет DELETE запрос с указанным идентификатором объекта. 
+    Удаляет объект из базы данных и возвращает информацию об удаленном объекте.
     '''
     client = main.db.query(Client_table).filter(Client_table.id == id).first()
     if not client:
@@ -102,3 +108,5 @@ def delete_client(id):
         phone_number=client.phone_number,
         email=client.email
     )
+
+

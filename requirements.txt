@@ -1,0 +1,3 @@
+fastapi[ALL]
+pydantic
+sqlalchemy

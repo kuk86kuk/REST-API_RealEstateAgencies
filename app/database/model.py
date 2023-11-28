@@ -35,7 +35,7 @@ class Deal_table(Base):
     id_object_realty = Column(Integer)
     id_sobstvenik = Column(Integer)
     id_client = Column(Integer)
-    datetime_deal = Column(DateTime)
+    datetime_deal = Column(String)
     amount = Column(Integer)
     currency = Column(String)
     status = Column(String)

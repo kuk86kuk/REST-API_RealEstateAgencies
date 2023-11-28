@@ -10,7 +10,7 @@ router = APIRouter(prefix='/deals', tags=['deals'])
 @router.get("/")
 def get_all_deals():
     '''
-   GET	/deals	Получить список всех сделок
+    Функция get_all_deals возвращает список всех сделок из базы данных.
     '''
     list_new = []
     deals = main.db.query(Deal_table).all()
@@ -33,7 +33,7 @@ def get_all_deals():
 @router.get("/{id}")
 def get_deal(id):
     '''
-   GET	/deals/:id	Получить информацию о указанной сделке
+    Функция get_deal возвращает информацию о сделке с указанным id.
     '''
     deal = main.db.query(Deal_table).filter(Deal_table.id == id).first()
     if not deal:
@@ -55,7 +55,9 @@ def get_deal(id):
 @router.post("/")
 def creat_new_deal(json: Deal):
     '''
-   POST	/deals	Создать новую сделку
+    Функция create_new_deal создает новую сделку на основе переданных данных в формате JSON. 
+    Перед созданием сделки проверяется существование объекта недвижимости, клиента и владельца 
+    с указанными id. Если какой-то из них не найден, возвращается сообщение "Id не найден".
    '''
     object_realty = main.db.query(ObjectRealty_table).filter(ObjectRealty_table.id == json.id_object_realty).first()
     client = main.db.query(Client_table).filter(Client_table.id == json.id_client).first()
@@ -87,7 +89,9 @@ def creat_new_deal(json: Deal):
 @router.put("/{id}")
 def change_deal(id, json: Deal):
     '''
-  PUT	/deals/:id	Обновить информацию о указанной сделке
+    Функция change_deal обновляет информацию о сделке с указанным id. 
+    Также проверяется существование объекта недвижимости, клиента и владельца с указанными id. 
+    Если какой-то из них не найден, возвращается сообщение "Id не найден".
     '''
     deal = main.db.query(Deal_table).filter(Deal_table.id == id).first()
     object_realty = main.db.query(ObjectRealty_table).filter(ObjectRealty_table.id == json.id_object_realty).first()
@@ -124,8 +128,8 @@ def change_deal(id, json: Deal):
 @router.delete("/{id}")
 def delete_deal(id):
     '''
-    DELETE	/deals/:id	Удалить указанную сделку
-
+    Функция delete_deal удаляет сделку с указанным id из базы данных.
+    Если сделка не найдена, возвращается сообщение "Id не найден".
     '''
     deal = main.db.query(Deal_table).filter(Deal_table.id == id).first()
     if not deal:
